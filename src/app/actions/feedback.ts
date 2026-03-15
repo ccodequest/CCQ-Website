@@ -2,7 +2,7 @@
 
 import { SITE } from '@/config/siteConfig';
 
-const WEB3FORMS_ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY || process.env.NEXT_PUBLIC_WEB3FORMS_KEY || SITE.web3formsKey;
+const WEB3FORMS_ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY || SITE.web3formsKey;
 
 export interface FeedbackData {
     name: string;
@@ -28,7 +28,7 @@ export async function submitFeedback(formData: FormData) {
         timestamp: new Date().toISOString(),
     };
 
-    if (!rawData.name || !rawData.email || !rawData.role || !rawData.message || rating < 1 || rating > 5) {
+    if (!rawData.name || !rawData.email || !rawData.role || !rawData.message || !Number.isFinite(rating) || rating < 1 || rating > 5) {
         return {
             success: false,
             message: 'Please complete all required fields.',
@@ -50,41 +50,49 @@ export async function submitFeedback(formData: FormData) {
         rawData.message,
     ].join('\n');
 
-    const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-        },
-        body: JSON.stringify({
-            access_key: WEB3FORMS_ACCESS_KEY,
-            subject: `${SITE.name} Feedback Submission`,
-            from_name: `${SITE.name} Website Feedback`,
-            name: rawData.name,
-            email: rawData.email,
-            replyto: rawData.email,
-            organization: rawData.organization || 'Not provided',
-            role: rawData.role,
-            rating: `${rawData.rating}/5`,
-            contact_back: rawData.contact_back ? 'Yes' : 'No',
-            message: emailBody,
-        }),
-        cache: 'no-store',
-    });
+    try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+            },
+            body: JSON.stringify({
+                access_key: WEB3FORMS_ACCESS_KEY,
+                subject: `${SITE.name} Feedback Submission`,
+                from_name: `${SITE.name} Website Feedback`,
+                name: rawData.name,
+                email: rawData.email,
+                replyto: rawData.email,
+                organization: rawData.organization || 'Not provided',
+                role: rawData.role,
+                rating: `${rawData.rating}/5`,
+                contact_back: rawData.contact_back ? 'Yes' : 'No',
+                message: emailBody,
+            }),
+            cache: 'no-store',
+        });
 
-    const payload = await response.json().catch(() => null);
+        const payload = await response.json().catch(() => null);
 
-    if (!response.ok || !payload?.success) {
+        if (!response.ok || !payload?.success) {
+            return {
+                success: false,
+                message: 'We could not send your feedback right now. Please try again in a moment.',
+            };
+        }
+
+        return {
+            success: true,
+            message: 'Feedback submitted successfully.',
+        };
+    } catch (error) {
+        console.error('[submitFeedback] Network error:', error);
         return {
             success: false,
             message: 'We could not send your feedback right now. Please try again in a moment.',
         };
     }
-
-    return {
-        success: true,
-        message: 'Feedback submitted successfully.',
-    };
 }
 
 export async function getFeedbackStats() {

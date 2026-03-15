@@ -2,9 +2,16 @@
 
 import { SITE } from '@/config/siteConfig';
 
-const WEB3FORMS_ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY || process.env.NEXT_PUBLIC_WEB3FORMS_KEY || SITE.web3formsKey;
+const WEB3FORMS_ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY || SITE.web3formsKey;
 
 export async function submitContact(formData: FormData) {
+  if (!WEB3FORMS_ACCESS_KEY) {
+    console.error('[submitContact] WEB3FORMS_ACCESS_KEY is not configured');
+    return {
+      success: false,
+      message: 'Contact form is currently unavailable. Please email us directly.',
+    };
+  }
   const name = String(formData.get('name') || '');
   const email = String(formData.get('email') || '');
   const message = String(formData.get('message') || '');
