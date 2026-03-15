@@ -4,9 +4,9 @@ import JsonLd from '@/components/JsonLd';
 import { SITE } from '@/config/siteConfig';
 
 interface LegalSection {
-    title: string;
-    paragraphs: string[];
-    bullets?: string[];
+    readonly title: string;
+    readonly paragraphs: readonly string[];
+    readonly bullets?: readonly string[];
 }
 
 interface LegalPageProps {
@@ -15,7 +15,7 @@ interface LegalPageProps {
     intro: string;
     path: string;
     description: string;
-    sections: LegalSection[];
+    sections: readonly LegalSection[];
 }
 
 export default function LegalPage({ eyebrow, title, intro, path, description, sections }: LegalPageProps) {
