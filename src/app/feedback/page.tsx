@@ -5,9 +5,6 @@ import FeedbackForm from '@/components/FeedbackForm';
 import JsonLd from '@/components/JsonLd';
 import { SITE } from '@/config/siteConfig';
 
-// Force dynamic rendering to ensure stats are fresh
-export const dynamic = 'force-dynamic';
-
 export const metadata: Metadata = {
     title: `Feedback | ${SITE.name}`,
     description: `Share feedback with ${SITE.name} about workshops, partnerships, digital experiences, or how we can improve.`,
