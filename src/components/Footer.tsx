@@ -76,13 +76,17 @@ export default function Footer() {
               >
                 <FaInstagram size={20} />
               </a>
-              <a
-                href={SITE.social.youtube}
-                className="w-10 h-10 rounded-full bg-red-50 dark:bg-gray-800 flex items-center justify-center text-red-600 dark:text-red-400 hover:bg-red-600 hover:text-white dark:hover:bg-red-600 dark:hover:text-white transition-all transform hover:-translate-y-1"
-                aria-label="YouTube"
-              >
-                <FaYoutube size={20} />
-              </a>
+                {SITE.social.youtube ? (
+                <a
+                  href={SITE.social.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-red-50 dark:bg-gray-800 flex items-center justify-center text-red-600 dark:text-red-400 hover:bg-red-600 hover:text-white dark:hover:bg-red-600 dark:hover:text-white transition-all transform hover:-translate-y-1"
+                  aria-label="YouTube"
+                >
+                  <FaYoutube size={20} />
+                </a>
+                ) : null}
             </div>
 
             <div className="space-y-2 text-sm">
