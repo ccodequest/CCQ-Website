@@ -66,9 +66,9 @@ export const SITE = {
   // ── Social media ─────────────────────────────────────────────
   social: {
     linkedin: 'https://www.linkedin.com/company/codequest-official/',
-    instagram: 'https://www.instagram.com/codequest2026?igsh=aHdweTZjcGMycWsz',
+    instagram: 'https://www.instagram.com/codequest2026',
     /** Set to a real URL once the channel is live */
-    youtube: '#',
+    youtube: '' as string,
   },
 
   // ── API Keys ─────────────────────────────────────────────────
@@ -87,7 +87,7 @@ export const SITE = {
   // ── Team LinkedIn profiles ───────────────────────────────────
   team: {
     zaid:    { linkedin: 'https://www.linkedin.com/in/mohammed-zaid-hassan-8468a3389/' },
-    jordan:  { linkedin: '#' },
+    jordan:  { linkedin: null as string | null },
     harsh:   { linkedin: 'https://www.linkedin.com/in/j-harsh-vardhan-934a00258/' },
     sulthan: { linkedin: 'https://www.linkedin.com/in/mohammed-sulthan-salahuddin-ayyubee/' },
     shreyas: { linkedin: 'https://www.linkedin.com/in/shreyas-dhalve-6a8b6727a/' },
