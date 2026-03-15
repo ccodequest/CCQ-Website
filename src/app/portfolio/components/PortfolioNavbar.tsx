@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FaWhatsapp, FaArrowLeft, FaRocket } from 'react-icons/fa';
 import WebDevEnquiryModal from '@/app/portfolio/components/WebDevEnquiryModal';
+import { SITE } from '@/config/siteConfig';
 
 export default function PortfolioNavbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -36,7 +37,7 @@ export default function PortfolioNavbar() {
         {
             name: 'WhatsApp',
             icon: <FaWhatsapp className="text-xl" />,
-            action: () => window.open('https://wa.me/919845293201', '_blank'),
+            action: () => window.open(SITE.whatsappUrl, '_blank'),
             isLink: false,
             color: 'text-green-400 hover:text-green-300'
         },
@@ -72,7 +73,7 @@ export default function PortfolioNavbar() {
                             </Link>
 
                             <a
-                                href="https://wa.me/919845293201"
+                                href={SITE.whatsappUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-sm font-medium text-green-400 hover:text-green-300 transition-colors flex items-center gap-2"

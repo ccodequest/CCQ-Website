@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { FaLinkedin, FaInstagram, FaYoutube, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { SITE } from '@/config/siteConfig';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -18,7 +19,7 @@ export default function Footer() {
                 <img src="/logo.png" alt="CodeQuest Logo" className="w-full h-full object-cover" />
               </div>
               <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                C/CODEQUEST
+                {SITE.brandName}
               </span>
             </Link>
             <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
@@ -26,7 +27,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-500">
               <FaMapMarkerAlt />
-              <span>Bengaluru, India</span>
+              <span>{SITE.location}</span>
             </div>
           </div>
 
@@ -47,9 +48,9 @@ export default function Footer() {
             <h3 className="font-bold text-gray-900 dark:text-white mb-4">Resources</h3>
             <ul className="space-y-2 text-sm">
               <li><Link href="/feedback" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Feedback</Link></li>
-              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Code of Conduct</a></li>
+              <li><Link href="/privacy-policy" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms-of-service" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Terms of Service</Link></li>
+              <li><Link href="/code-of-conduct" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Code of Conduct</Link></li>
             </ul>
           </div>
 
@@ -58,7 +59,7 @@ export default function Footer() {
             <h3 className="font-bold text-gray-900 dark:text-white mb-4">Connect With Us</h3>
             <div className="flex gap-4 mb-6">
               <a
-                href="https://www.linkedin.com/company/codequest-official/"
+                href={SITE.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-blue-50 dark:bg-gray-800 flex items-center justify-center text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition-all transform hover:-translate-y-1"
@@ -67,7 +68,7 @@ export default function Footer() {
                 <FaLinkedin size={20} />
               </a>
               <a
-                href="https://www.instagram.com/codequest2026?igsh=aHdweTZjcGMycWsz"
+                href={SITE.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-pink-50 dark:bg-gray-800 flex items-center justify-center text-pink-600 dark:text-pink-400 hover:bg-pink-600 hover:text-white dark:hover:bg-pink-600 dark:hover:text-white transition-all transform hover:-translate-y-1"
@@ -76,7 +77,7 @@ export default function Footer() {
                 <FaInstagram size={20} />
               </a>
               <a
-                href="#"
+                href={SITE.social.youtube}
                 className="w-10 h-10 rounded-full bg-red-50 dark:bg-gray-800 flex items-center justify-center text-red-600 dark:text-red-400 hover:bg-red-600 hover:text-white dark:hover:bg-red-600 dark:hover:text-white transition-all transform hover:-translate-y-1"
                 aria-label="YouTube"
               >
@@ -85,11 +86,11 @@ export default function Footer() {
             </div>
 
             <div className="space-y-2 text-sm">
-              <a href="mailto:codequest@zohomail.in" className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                <FaEnvelope size={14} /> codequest@zohomail.in
+              <a href={`mailto:${SITE.emails.primary}`} className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <FaEnvelope size={14} /> {SITE.emails.primary}
               </a>
-              <a href="mailto:ccodequest@gmail.com" className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                <FaEnvelope size={14} /> ccodequest@gmail.com
+              <a href={`mailto:${SITE.emails.secondary}`} className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <FaEnvelope size={14} /> {SITE.emails.secondary}
               </a>
             </div>
           </div>
@@ -98,10 +99,10 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-500 dark:text-gray-500 text-sm font-medium">
-            &copy; {currentYear} CodeQuest. All rights reserved.
+            &copy; {currentYear} {SITE.name}. All rights reserved.
           </p>
           <p className="text-gray-400 dark:text-gray-600 text-xs">
-            Designed & Developed by Team C/CodeQuest
+            Designed & Developed by {SITE.attribution}
           </p>
         </div>
       </div>

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { FaArrowRight, FaCode, FaFlask, FaWhatsapp } from "react-icons/fa";
 import CodeParticles from "@/components/CodeParticles";
+import { SITE } from "@/config/siteConfig";
 
 interface PortfolioHeroProps {
     onContactClick: () => void;
@@ -102,7 +103,7 @@ export default function PortfolioHero({ onContactClick }: PortfolioHeroProps) {
                     </Link>
 
                     <a
-                        href="https://wa.me/919845293201"
+                        href={SITE.whatsappUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-6 py-3 bg-green-500/10 border border-green-500/30 text-green-400 font-bold rounded-full hover:bg-green-500 hover:text-white transition-all w-full sm:w-auto text-sm flex items-center justify-center gap-2"

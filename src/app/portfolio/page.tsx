@@ -7,6 +7,7 @@ import PortfolioNavbar from './components/PortfolioNavbar';
 import PortfolioFooter from './components/PortfolioFooter';
 import Process from '@/components/Process';
 import ScrollToTop from '@/components/ScrollToTop';
+import { SITE } from '@/config/siteConfig';
 
 import ScrollingLogos from '@/components/ScrollingLogos';
 import WebDevEnquiryModal from './components/WebDevEnquiryModal';
@@ -36,7 +37,7 @@ export default function Portfolio() {
             description: 'A GIS‑driven land intelligence platform for property verification, disputes insight, and better decision‑making for buyers, banks, and institutions. Currently in active development with private beta users.',
             tags: ['Next.js', 'Django', 'PostgreSQL'],
             icon: <FaSchool className="text-blue-500 size-8" />,
-            url: 'https://land-xi-ebon.vercel.app/',
+            url: SITE.portfolio.plotIQ,
             status: 'In Progress - Private Beta',
             statusColor: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/50'
         },
@@ -47,7 +48,7 @@ export default function Portfolio() {
             description: 'A fast, SEO‑optimized site for a Academy, highlighting courses, testimonials, and location details, designed to convert local traffic into admissions.',
             tags: ['React', 'Node.js', 'MongoDB'],
             icon: <FaLaptopCode className="text-purple-500 size-8" />,
-            url: 'https://www.medhasyaacademy.com/',
+            url: SITE.portfolio.medhaSya,
             status: 'Completed - Live',
             statusColor: 'bg-green-500/20 text-green-300 border-green-500/50'
         },
@@ -58,7 +59,7 @@ export default function Portfolio() {
             description: 'A premium interior design site focused on storytelling, portfolio visuals, and consultation bookings, crafted for a boutique studio targeting high‑value residential and commercial clients.',
             tags: ['Next.js', 'Tailwind', 'Framer Motion'],
             icon: <FaMobileAlt className="text-green-500 size-8" />,
-            url: 'https://v0-nisha-interio-website.vercel.app/',
+            url: SITE.portfolio.nishaInterio,
             status: 'In Progress - Private Beta',
             statusColor: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/50'
         }

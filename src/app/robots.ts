@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { SITE } from '@/config/siteConfig';
 
 export default function robots(): MetadataRoute.Robots {
     return {
@@ -7,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: 'https://codequest.in/sitemap.xml',
+        sitemap: `${SITE.siteUrl}/sitemap.xml`,
     };
 }

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { FaArrowUp, FaWhatsapp } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import { SITE } from '@/config/siteConfig';
 
 export default function ScrollToTop() {
     const [isVisible, setIsVisible] = useState(false);
@@ -41,7 +42,7 @@ export default function ScrollToTop() {
             */}
 
             <div className="pointer-events-auto hidden md:flex items-center justify-center w-12 h-12 bg-green-500 rounded-full shadow-lg hover:bg-green-600 transition-all hover:scale-110 cursor-pointer"
-                onClick={() => window.open('https://wa.me/919845293201', '_blank')}>
+                onClick={() => window.open(SITE.whatsappUrl, '_blank')}>
                 <FaWhatsapp className="text-white text-2xl" />
             </div>
 

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { FaTimes, FaCalendarAlt, FaMapMarkerAlt, FaRocket } from 'react-icons/fa';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import { SITE } from '@/config/siteConfig';
 
 export default function HackathonPopup() {
     const [isOpen, setIsOpen] = useState(false);
@@ -85,7 +86,7 @@ export default function HackathonPopup() {
 
                             <div className="flex flex-col gap-3">
                                 <Link
-                                    href="https://forms.gle/h6X7cwtMwg8sFQNWA"
+                                    href={SITE.hackathonRegistrationUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2"

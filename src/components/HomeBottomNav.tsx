@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FaEnvelope, FaImages, FaLaptopCode, FaWhatsapp } from 'react-icons/fa';
 import { useState } from 'react';
 import MainEnquiryModal from '@/components/MainEnquiryModal';
+import { SITE } from '@/config/siteConfig';
 
 export default function HomeBottomNav() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,7 +34,7 @@ export default function HomeBottomNav() {
         {
             name: 'WhatsApp',
             icon: <FaWhatsapp />,
-            action: () => window.open('https://wa.me/919845293201', '_blank'),
+            action: () => window.open(SITE.whatsappUrl, '_blank'),
             isLink: false,
             color: 'text-green-400'
         }

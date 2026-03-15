@@ -3,6 +3,8 @@ import { Poppins } from 'next/font/google';
 import './globals.css';
 import HackathonRegisterButton from '@/components/HackathonRegisterButton';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import JsonLd from '@/components/JsonLd';
+import { SITE } from '@/config/siteConfig';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -11,36 +13,37 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://codequest.in'), // Replace with actual domain
+  metadataBase: new URL(SITE.siteUrl),
   title: {
-    default: 'CodeQuest | Empowering Young Innovators',
-    template: '%s | CodeQuest',
+    default: SITE.seo.defaultTitle,
+    template: `%s | ${SITE.name}`,
   },
-  description: 'CodeQuest empowers students with tech education, hackathons, and innovation workshops. Join the movement to Solve, Create, and Conquer.',
-  keywords: ['CodeQuest', 'Hackathon', 'Coding for Kids', 'STEM Education', 'Innovation', 'Tech Workshops', 'Robotics'],
-  authors: [{ name: 'CodeQuest Team' }],
-  creator: 'CodeQuest',
+  description: SITE.description,
+  keywords: ['CCQ', 'Coding for Kids', 'STEM Education', 'School Workshops', 'Hackathons', 'Innovation Programs', 'Web Development', 'Technology Education'],
+  authors: [{ name: `${SITE.name} Team` }],
+  creator: SITE.name,
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://codequest.in',
-    title: 'CodeQuest | Empowering Young Innovators',
-    description: 'Join the brightest minds to tackle real-world challenges and build the future, one line of code at a time.',
-    siteName: 'CodeQuest',
+    url: SITE.siteUrl,
+    title: SITE.seo.defaultTitle,
+    description: SITE.description,
+    siteName: SITE.name,
     images: [
       {
-        url: '/logo.png', // Ideally a larger OG image
+        url: SITE.seo.ogImage,
         width: 1200,
         height: 630,
-        alt: 'CodeQuest - Solve. Create. Conquer.',
+        alt: `${SITE.name} - ${SITE.tagline}`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CodeQuest | Empowering Young Innovators',
-    description: 'Join the movement to Solve, Create, and Conquer.',
-    images: ['/logo.png'],
+    title: SITE.seo.defaultTitle,
+    description: SITE.description,
+    images: [SITE.seo.ogImage],
+    creator: SITE.seo.twitterHandle,
   },
   robots: {
     index: true,
@@ -53,9 +56,41 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const structuredData = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: SITE.name,
+      url: SITE.siteUrl,
+      logo: `${SITE.siteUrl}${SITE.seo.ogImage}`,
+      sameAs: [SITE.social.linkedin, SITE.social.instagram].filter(Boolean),
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          contactType: 'customer support',
+          email: SITE.emails.support,
+          areaServed: 'IN',
+          availableLanguage: ['English'],
+        },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: SITE.name,
+      url: SITE.siteUrl,
+      description: SITE.description,
+      publisher: {
+        '@type': 'Organization',
+        name: SITE.name,
+      },
+    },
+  ];
+
   return (
     <html lang="en" className={`${poppins.variable} dark`}> 
       <body className="bg-gray-900 text-white font-poppins overflow-x-hidden">
+        <JsonLd data={structuredData} />
         {children}
         <HackathonRegisterButton />
         <SpeedInsights />

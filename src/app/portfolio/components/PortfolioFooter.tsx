@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { FaMapMarkerAlt, FaEnvelope } from 'react-icons/fa';
+import { SITE } from '@/config/siteConfig';
 
 export default function PortfolioFooter() {
     const currentYear = new Date().getFullYear();
@@ -18,7 +19,7 @@ export default function PortfolioFooter() {
                                 <img src="/logo.png" alt="CodeQuest Logo" className="w-full h-full object-cover" />
                             </div>
                             <span className="text-xl font-bold tracking-tight text-white">
-                                CCQ DEV Portfolio
+                                {SITE.portfolioBrandName}
                             </span>
                         </Link>
                         <p className="text-gray-400 text-sm leading-relaxed">
@@ -26,7 +27,7 @@ export default function PortfolioFooter() {
                         </p>
                         <div className="flex items-center gap-2 text-sm text-gray-500">
                             <FaMapMarkerAlt />
-                            <span>Bengaluru, India</span>
+                            <span>{SITE.location}</span>
                         </div>
                     </div>
 
@@ -45,11 +46,11 @@ export default function PortfolioFooter() {
                     <div>
                         <h3 className="font-bold text-white mb-4">Contact</h3>
                         <div className="space-y-2 text-sm">
-                            <a href="mailto:codequest@zohomail.in" className="flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors">
-                                <FaEnvelope size={14} /> codequest@zohomail.in
+                            <a href={`mailto:${SITE.emails.primary}`} className="flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors">
+                                <FaEnvelope size={14} /> {SITE.emails.primary}
                             </a>
-                            <a href="mailto:ccodequest@gmail.com" className="flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors">
-                                <FaEnvelope size={14} /> ccodequest@gmail.com
+                            <a href={`mailto:${SITE.emails.secondary}`} className="flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors">
+                                <FaEnvelope size={14} /> {SITE.emails.secondary}
                             </a>
                         </div>
                     </div>
@@ -58,10 +59,10 @@ export default function PortfolioFooter() {
                 {/* Bottom Bar */}
                 <div className="border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-gray-600 text-sm font-medium">
-                        &copy; {currentYear} CodeQuest Agency. All rights reserved.
+                        &copy; {currentYear} {SITE.name} Agency. All rights reserved.
                     </p>
                     <p className="text-gray-600 text-xs">
-                        Designed & Developed by Team C/CodeQuest
+                        Designed & Developed by {SITE.attribution}
                     </p>
                 </div>
             </div>

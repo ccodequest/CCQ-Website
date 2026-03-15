@@ -1,81 +1,95 @@
 'use server';
 
-import fs from 'fs';
-import path from 'path';
+import { SITE } from '@/config/siteConfig';
 
-const DATA_FILE = path.join(process.cwd(), 'src', 'data', 'hive.json');
+const WEB3FORMS_ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY || process.env.NEXT_PUBLIC_WEB3FORMS_KEY || SITE.web3formsKey;
 
 export interface FeedbackData {
     name: string;
-    school: string;
+    email: string;
+    organization?: string;
     role: string;
-    clarity_rating: number;
+    rating: number;
     message: string;
-    presentation_interest?: string;
-    phone: string;
+    contact_back: boolean;
     timestamp: string;
 }
 
-export async function submitHiveFeedback(formData: FormData) {
-    const rawData = {
+export async function submitFeedback(formData: FormData) {
+    const rating = Number(formData.get('rating'));
+    const rawData: FeedbackData = {
         name: formData.get('name') as string,
-        school: formData.get('school') as string,
+        email: formData.get('email') as string,
+        organization: (formData.get('organization') as string) || '',
         role: formData.get('role') as string,
-        clarity_rating: parseInt(formData.get('clarity_rating') as string),
+        rating,
         message: formData.get('message') as string,
-        presentation_interest: formData.get('presentation_interest') as string || 'No',
-        phone: formData.get('phone') as string,
-        timestamp: new Date().toISOString()
+        contact_back: formData.get('contact_back') === 'Yes',
+        timestamp: new Date().toISOString(),
     };
 
-    // Read existing data
-    let currentData: FeedbackData[] = [];
-    if (fs.existsSync(DATA_FILE)) {
-        const fileContent = fs.readFileSync(DATA_FILE, 'utf-8');
-        try {
-            currentData = JSON.parse(fileContent);
-        } catch (e) {
-            currentData = [];
-        }
+    if (!rawData.name || !rawData.email || !rawData.role || !rawData.message || rating < 1 || rating > 5) {
+        return {
+            success: false,
+            message: 'Please complete all required fields.',
+        };
     }
 
-    // Append new data
-    currentData.push(rawData);
+    const emailBody = [
+        `New feedback submitted on ${SITE.name}`,
+        '',
+        `Name: ${rawData.name}`,
+        `Email: ${rawData.email}`,
+        `Organization: ${rawData.organization || 'Not provided'}`,
+        `Role: ${rawData.role}`,
+        `Rating: ${rawData.rating}/5`,
+        `Contact back requested: ${rawData.contact_back ? 'Yes' : 'No'}`,
+        `Submitted at: ${rawData.timestamp}`,
+        '',
+        'Message:',
+        rawData.message,
+    ].join('\n');
 
-    // Write back to file
-    fs.writeFileSync(DATA_FILE, JSON.stringify(currentData, null, 2));
+    const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+        },
+        body: JSON.stringify({
+            access_key: WEB3FORMS_ACCESS_KEY,
+            subject: `${SITE.name} Feedback Submission`,
+            from_name: `${SITE.name} Website Feedback`,
+            name: rawData.name,
+            email: rawData.email,
+            replyto: rawData.email,
+            organization: rawData.organization || 'Not provided',
+            role: rawData.role,
+            rating: `${rawData.rating}/5`,
+            contact_back: rawData.contact_back ? 'Yes' : 'No',
+            message: emailBody,
+        }),
+        cache: 'no-store',
+    });
 
-    // Calculate stats
-    const total = currentData.length;
-    const avgRating = currentData.reduce((acc, curr) => acc + curr.clarity_rating, 0) / total;
+    const payload = await response.json().catch(() => null);
+
+    if (!response.ok || !payload?.success) {
+        return {
+            success: false,
+            message: 'We could not send your feedback right now. Please try again in a moment.',
+        };
+    }
 
     return {
         success: true,
-        stats: {
-            total,
-            average: avgRating.toFixed(1)
-        }
+        message: 'Feedback submitted successfully.',
     };
 }
 
-export async function getHiveStats() {
-    if (!fs.existsSync(DATA_FILE)) {
-        return { total: 0, average: '0.0' };
-    }
-
-    const fileContent = fs.readFileSync(DATA_FILE, 'utf-8');
-    try {
-        const currentData: FeedbackData[] = JSON.parse(fileContent);
-        if (currentData.length === 0) return { total: 0, average: '0.0' };
-
-        const total = currentData.length;
-        const avgRating = currentData.reduce((acc, curr) => acc + curr.clarity_rating, 0) / total;
-
-        return {
-            total,
-            average: avgRating.toFixed(1)
-        };
-    } catch (e) {
-        return { total: 0, average: '0.0' };
-    }
+export async function getFeedbackStats() {
+    return null;
 }
+
+export const submitHiveFeedback = submitFeedback;
+export const getHiveStats = getFeedbackStats;

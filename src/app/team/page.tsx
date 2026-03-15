@@ -1,63 +1,65 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { FaLinkedin } from 'react-icons/fa';
+import { SITE } from '@/config/siteConfig';
 
 const teamMembers = [
     {
-        name: "Zaid",
+        name: "Mohammed Zaid Hassan",
         role: "Founder & CEO",
         fullRole: "Chief Executive Officer",
         image: "/TeamImages/Zaid4x5.jpg",
-        linkedin: "https://www.linkedin.com/in/mohammed-zaid-hassan-8468a3389/"
+        linkedin: SITE.team.zaid.linkedin
     },
-    {
-        name: "Divyavani",
-        role: "Senior Advisor",
-        fullRole: "Senior Advisor",
-        image: "/TeamImages/divyavani.jpeg",
-        linkedin: "#"
-    },
-    {
-        name: "Jordan",
+     {
+        name: "Jordan Emmanuel",
         role: "Co-founder & CIO",
         fullRole: "Chief Information Officer",
         image: "/TeamImages/Jordan4x5.jpg",
-        linkedin: "#"
+        linkedin: SITE.team.jordan.linkedin
     },
     {
+        name: "J Harsh Vardhan",
+        role: "CTO",
+        fullRole: " Chief Technical Officer",
+        image: "/TeamImages/harsh4x5.jpg",
+        linkedin: SITE.team.harsh.linkedin
+    },
+     {
+        name: "Mohammed Sulthan Salahuddin Ayyubee",
+        role: "CFSO",
+        fullRole: "Chief Finance Officer & Chief Security Officer",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", // Placeholder
+        linkedin: SITE.team.sulthan.linkedin
+    }, 
+    {
         name: "Shreyas",
-        role: "Co-founder, CTO & BDE",
-        fullRole: "Chief Technical Officer & Business Development Engineer",
+        role: "COO",
+        fullRole: " Chief Operational Officer",
         image: "/TeamImages/Shreyas4x5.jpg",
-        linkedin: "https://www.linkedin.com/in/shreyas-dhalve-6a8b6727a/"
+        linkedin: SITE.team.shreyas.linkedin
     },
     {
         name: "Anlin",
-        role: "Co-founder, CMO & HR",
-        fullRole: "Chief Marketing Officer & HR",
+        role: "CMO",
+        fullRole: "Chief Marketing Officer",
         image: "/TeamImages/Anlin4x5.jpg",
-        linkedin: "#"
-    },
-    /* {
-        name: "Mohammed Sulthan Salahuddin Ayyubee",
-        role: "Co-founder, CFO & CSO",
-        fullRole: "Chief Finance Officer & Chief Security Officer",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", // Placeholder
-        linkedin: "https://www.linkedin.com/in/mohammed-sulthan-salahuddin-ayyubee/"
-    }, */
-    {
-        name: "Harsha",
-        role: "Co-founder, COO & MD",
-        fullRole: "Chief Operational Officer & Managing Director",
-        image: "/TeamImages/harsh4x5.jpg",
-        linkedin: "https://www.linkedin.com/in/j-harsh-vardhan-934a00258/"
+       /* linkedin: "#" */
     },
     {
-        name: "Vishal",
+        name: "Divyavani",
+        role: "Senior Educational Advisor",
+        fullRole: "",
+        image: "/TeamImages/divyavani.jpeg",
+        linkedin: SITE.team.divya.linkedin
+    },
+    
+    {
+        name: "Vishal Gowda",
         role: "Tech Support",
         fullRole: "Technical Support Engineer",
         image: "/TeamImages/Vishal.jpg",
-        linkedin: "https://www.linkedin.com/in/vishal-gowda-9b2817322/"
+        linkedin: SITE.team.vishal.linkedin
     }
 ];
 

@@ -2,6 +2,7 @@
 
 import { FaCalendarAlt, FaArrowRight } from 'react-icons/fa';
 import Link from 'next/link';
+import { SITE } from '@/config/siteConfig';
 
 export default function EventBoard() {
 
@@ -37,7 +38,7 @@ export default function EventBoard() {
                         </p>
                     </div>
 
-                    <Link href="https://forms.gle/h6X7cwtMwg8sFQNWA" target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                    <Link href={SITE.hackathonRegistrationUrl} target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
                         <span className="text-xs font-bold uppercase tracking-wider">Pre-Register Now</span>
                         <FaArrowRight className="ml-2 text-[10px]" />
                     </Link>

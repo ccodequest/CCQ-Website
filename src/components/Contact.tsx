@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { FaEnvelope, FaLinkedin, FaInstagram, FaPhoneAlt, FaCheckCircle, FaTimes } from 'react-icons/fa';
 import EnquiryForm from './EnquiryForm';
+import { SITE } from '@/config/siteConfig';
 
 export default function Contact() {
     // const [isSubmitting, setIsSubmitting] = useState(false); // Removed: Handled in EnquiryForm
@@ -29,21 +30,21 @@ export default function Contact() {
                                     <div className="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
                                         <FaEnvelope />
                                     </div>
-                                    <a href="mailto:CodeQuest@zohomail.in" className="text-sm font-medium">CodeQuest@zohomail.in</a>
+                                    <a href={`mailto:${SITE.emails.primary}`} className="text-sm font-medium">{SITE.emails.primary}</a>
                                 </div>
                                 <div className="flex items-center gap-4 text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors">
                                     <div className="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
                                         <FaEnvelope />
                                     </div>
-                                    <a href="mailto:ccodequest@gmail.com" className="text-sm font-medium">ccodequest@gmail.com</a>
+                                    <a href={`mailto:${SITE.emails.secondary}`} className="text-sm font-medium">{SITE.emails.secondary}</a>
                                 </div>
                                 <div className="flex items-center gap-4 text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors">
                                     <div className="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
                                         <FaPhoneAlt />
                                     </div>
                                     <div className="flex flex-col">
-                                        <a href="tel:9845293201" className="text-sm font-medium">98452 93201</a>
-                                        <a href="tel:9740745485" className="text-sm font-medium">97407 45485</a>
+                                        <a href={`tel:${SITE.phones.primary}`} className="text-sm font-medium">{SITE.phones.primary.replace(/(\d{5})(\d{5})/, '$1 $2')}</a>
+                                        <a href={`tel:${SITE.phones.secondary}`} className="text-sm font-medium">{SITE.phones.secondary.replace(/(\d{5})(\d{5})/, '$1 $2')}</a>
                                     </div>
                                 </div>
                             </div>
