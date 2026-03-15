@@ -21,7 +21,7 @@ const teamMembers = [
     {
         name: "J Harsh Vardhan",
         role: "CTO",
-        fullRole: " Chief Technical Officer",
+        fullRole: "Chief Technical Officer",
         image: "/TeamImages/harsh4x5.jpg",
         linkedin: SITE.team.harsh.linkedin
     },
@@ -35,7 +35,7 @@ const teamMembers = [
     {
         name: "Shreyas",
         role: "COO",
-        fullRole: " Chief Operational Officer",
+        fullRole: "Chief Operational Officer",
         image: "/TeamImages/Shreyas4x5.jpg",
         linkedin: SITE.team.shreyas.linkedin
     },
@@ -97,9 +97,11 @@ export default function TeamPage() {
                                     />
                                     {/* Social Overlay */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-6">
-                                        <a href={member.linkedin} className="text-white hover:text-blue-400 transform hover:scale-110 transition-all">
-                                            <FaLinkedin size={24} />
-                                        </a>
+                                        {member.linkedin ? (
+                                            <a href={member.linkedin} className="text-white hover:text-blue-400 transform hover:scale-110 transition-all">
+                                                <FaLinkedin size={24} />
+                                            </a>
+                                        ) : null}
                                     </div>
                                 </div>
 
