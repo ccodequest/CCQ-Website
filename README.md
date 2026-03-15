@@ -1,55 +1,146 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CCQ Pvt Ltd — Official Website
+
+The official website for **CCQ Pvt Ltd**, an EdTech and software solutions company delivering school and college-focused learning programs, hackathons, internships, digital platforms, and custom software and AI solutions.
+
+> Built with [Next.js](https://nextjs.org) (App Router) · TypeScript · Tailwind CSS v4 · Deployed on [Vercel](https://vercel.com)
+
+---
+
+## Pages
+
+| Route | Description |
+|---|---|
+| `/` | Home — hero, about, services, partners, contact |
+| `/mission` | Company mission, story and values |
+| `/team` | Meet the CCQ Pvt Ltd team |
+| `/partners` | Partner schools and organizations |
+| `/gallery` | Event and workshop gallery |
+| `/portfolio` | CCQ Dev — web and software portfolio |
+| `/contact` | Enquiry and contact form |
+| `/feedback` | Community feedback form (delivered via Web3Forms) |
+| `/privacy-policy` | Privacy Policy |
+| `/terms-of-service` | Terms of Service |
+| `/code-of-conduct` | Code of Conduct |
+
+---
+
+## Legal & Policy Pages
+
+Three dedicated legal pages are included, each with full SEO metadata, Open Graph tags, and JSON-LD structured data.
+
+### Privacy Policy — `/privacy-policy`
+Explains how CCQ Pvt Ltd collects, uses, and protects personal information submitted through forms, event registrations, school programmes, and digital interactions. Covers:
+- Information collected (contact details, programme interest, usage data)
+- How information is used and shared
+- Children and school-related interactions
+- Data retention and protection measures
+- User rights (access, correction, deletion) — contact `collab@in2ccq.com`
+- Policy update process and effective date
+
+### Terms of Service — `/terms-of-service`
+Governs use of the CCQ Pvt Ltd website and participation in programmes, events, and digital platforms. Covers:
+- Acceptance of terms
+- Services offered (EdTech, hackathons, schools, web/software)
+- Event participation and registrations
+- Intellectual property
+- Limitation of liability
+- Governing law — Bengaluru, Karnataka, India
+
+### Code of Conduct — `/code-of-conduct`
+Sets expected behaviour standards for all CCQ Pvt Ltd events, programmes, and community interactions. Covers:
+- Inclusive and respectful community standards
+- Behaviour during hackathons, workshops, and digital spaces
+- Special care in student-focused environments
+- Unacceptable behaviour and reporting process
+- Reporting contact: `collab@in2ccq.com`
+
+All three pages share the `LegalPage` component (`src/components/LegalPage.tsx`) which renders consistent design, breadcrumb navigation, and per-page structured data.
+
+---
 
 ## Getting Started
 
 ### Environment Variables
 
-Before running the project, create a `.env.local` file in the root directory and add the following environment variables:
+Create a `.env.local` file in the root directory:
 
 ```bash
-# Web3Forms API Key
+# Web3Forms API Key — used server-side for contact and feedback form delivery
 # Get your access key from https://web3forms.com
 WEB3FORMS_ACCESS_KEY=your_access_key_here
 ```
 
-You can copy the `.env.example` file as a template:
+You can copy `.env.example` as a template:
 ```bash
 cp .env.example .env.local
 ```
 
-Then update the values with your actual API keys.
-
 ### Running the Development Server
-
-First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+  app/
+    page.tsx                # Home page
+    layout.tsx              # Root layout (metadata, JSON-LD, SpeedInsights)
+    sitemap.ts              # Auto-generated sitemap
+    robots.ts               # robots.txt rules
+    actions/
+      contact.ts            # Server action — contact form (Web3Forms)
+      feedback.ts           # Server action — feedback form (Web3Forms)
+    privacy-policy/         # Privacy Policy page
+    terms-of-service/       # Terms of Service page
+    code-of-conduct/        # Code of Conduct page
+    feedback/               # Community feedback page
+    portfolio/              # CCQ Dev portfolio section
+  components/
+    LegalPage.tsx           # Shared layout for all three legal pages
+    JsonLd.tsx              # JSON-LD structured data injector
+    Hero.tsx                # Homepage hero
+    About.tsx               # About section
+    Footer.tsx              # Site-wide footer with legal links
+  config/
+    siteConfig.ts           # Single source of truth for brand, contact, SEO values
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router, Turbopack)
+- **Language:** TypeScript (strict)
+- **Styling:** Tailwind CSS v4
+- **Form Delivery:** Web3Forms (server-side, Vercel-safe)
+- **Analytics:** Vercel Speed Insights
+- **SEO:** Per-page metadata, Open Graph, JSON-LD structured data
+- **Deployment:** Vercel
+
+---
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Set the `WEB3FORMS_ACCESS_KEY` environment variable in your Vercel project settings before deploying.
+
+See the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+---
+
+&copy; 2026 CCQ Pvt Ltd. All rights reserved.
