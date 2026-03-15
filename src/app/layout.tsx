@@ -62,7 +62,7 @@ export default function RootLayout({
       '@type': 'Organization',
       name: SITE.name,
       url: SITE.siteUrl,
-      logo: `${SITE.siteUrl}${SITE.seo.ogImage}`,
+      logo: new URL(SITE.seo.ogImage, SITE.siteUrl).href,
       sameAs: [SITE.social.linkedin, SITE.social.instagram].filter(Boolean),
       contactPoint: [
         {
