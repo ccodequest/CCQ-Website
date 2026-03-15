@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Watermark from './Watermark';
+import { SITE } from '@/config/siteConfig';
 
 export default function About() {
     const [currentImage, setCurrentImage] = useState(0);
@@ -38,15 +39,20 @@ export default function About() {
                         <div className="prose prose-lg text-gray-600 dark:text-gray-300">
                             <p>
                                 CODEQUEST was founded by a group of passionate tech enthusiasts with a shared vision: to create
-                                a platform where innovation thrives and collaboration is celebrated. We believe that hackathons
-                                are more than just coding competitions; they are crucibles for creativity, learning, and
-                                networking.
+                                a platform where innovation thrives and collaboration is celebrated. Today, as {SITE.name}, we
+                                continue that vision as an EdTech and software solutions company.
                             </p>
                             <p>
                                 Since our inception, we have organized numerous events that have brought together thousands of
                                 students, developers, and designers from across the country. Our mission is to empower the next
                                 generation of tech leaders by providing them with the resources, mentorship, and opportunities
-                                they need to succeed.
+                                they need to succeed while also delivering custom software solutions and AI tools for selected
+                                education and industry partners.
+                            </p>
+                            <p>
+                                Our focused vision: "To design and deliver innovative school and college-focused learning programs,
+                                hackathons, internships, and digital platforms for students, while also building custom software
+                                solutions and AI tools for select clients across education and industry."
                             </p>
                         </div>
 

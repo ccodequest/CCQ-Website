@@ -11,12 +11,13 @@ import ExclusiveOffer from '@/components/ExclusiveOffer';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import HackathonPopup from '@/components/HackathonPopup';
+import { SITE } from '@/config/siteConfig';
 
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Home | CodeQuest',
-  description: 'Welcome to CodeQuest. We cultivate curiosity, resilience, and creativity in students through world-class tech education and hackathons.',
+  title: `Home | ${SITE.name}`,
+  description: SITE.description,
 };
 
 export default function Home() {

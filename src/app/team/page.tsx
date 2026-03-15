@@ -66,8 +66,8 @@ const teamMembers = [
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Our Team | CodeQuest',
-    description: 'Meet the passionate team behind CodeQuest. Founders, engineers, and educators dedicated to the future of tech.',
+    title: `Our Team | ${SITE.name}`,
+    description: `Meet the team behind ${SITE.name} building EdTech programs and software solutions for learners and organizations.`,
 };
 
 export default function TeamPage() {
@@ -77,7 +77,7 @@ export default function TeamPage() {
             <div className="pt-32 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Meet Our Team</h1>
-                    <p className="text-xl text-gray-600 dark:text-gray-400">The passionate minds behind CodeQuest.</p>
+                    <p className="text-xl text-gray-600 dark:text-gray-400">The passionate minds behind {SITE.name}.</p>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -5,6 +5,7 @@ import { FaArrowRight } from 'react-icons/fa';
 import EventBoard from './EventBoard';
 import EnquiryModal from './EnquiryModal';
 import { useState } from 'react';
+import { SITE } from '@/config/siteConfig';
 
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,15 +28,18 @@ export default function Hero() {
           {/* Left Column: Main Content */}
           <div className="space-y-8 animate-fade-in-up text-center lg:text-left">
             <h2 className="text-blue-600 dark:text-blue-400 font-bold tracking-wider uppercase text-sm md:text-base mb-4 bg-white/50 dark:bg-gray-900/50 px-4 py-2 rounded-full inline-block backdrop-blur-sm border border-blue-100 dark:border-blue-900">
-              Tech Education & Premium Web Solutions
+              EdTech & Software Solutions
             </h2>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-gray-900 dark:text-white leading-tight">
-              C/CODEQUEST<br />
+              C/{SITE.brandName.toUpperCase()}<br />
               <span className="text-xl md:text-2xl lg:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 relative whitespace-nowrap">
                 CREATE COGNIZE CONQUER
                 <svg className="absolute w-full h-3 -bottom-1 left-0 text-blue-400 opacity-50 hidden lg:block" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.00025 6.99997C25.7501 9.99995 89.2842 9.09915 133.003 3.99998C154.675 1.47228 174.455 -0.730337 197.994 0.999983" stroke="currentColor" strokeWidth="3"></path></svg>
               </span>
             </h1>
+            <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 max-w-2xl">
+              Officially operating as {SITE.name}, we deliver student-focused learning programs and build custom software and AI solutions.
+            </p>
 
             {/* WhatsApp removed */}
 

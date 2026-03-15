@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
 import GalleryContent from '@/components/GalleryContent';
+import { SITE } from '@/config/siteConfig';
 
 export const metadata: Metadata = {
-    title: 'Gallery | CodeQuest',
-    description: 'Explore the moments of innovation, learning, and fun at CodeQuest. See our hackathons and workshops in action.',
+    title: `Gallery | ${SITE.name}`,
+    description: `Explore moments of innovation, learning, and collaboration with ${SITE.name} programs, events, and workshops.`,
 };
 
 export default function GalleryPage() {

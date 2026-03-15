@@ -101,7 +101,7 @@ export default function Contact() {
                             </h3>
 
                             <p className="text-gray-600 dark:text-gray-300 mb-8">
-                                Thank you for contacting CodeQuest. Our team will review your enquiry and get back to you shortly.
+                                Thank you for contacting {SITE.name}. Our team will review your enquiry and get back to you shortly.
                             </p>
 
                             <button

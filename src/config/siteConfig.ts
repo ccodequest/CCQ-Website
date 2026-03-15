@@ -5,7 +5,7 @@
  *
  * This is the single source of truth for all contact details,
  * social links, API keys, and other configurable values used
- * across the CodeQuest website.
+ * across the CCQ website.
  *
  * HOW TO USE:
  *   import { SITE } from '@/config/siteConfig';
@@ -15,12 +15,12 @@
 export const SITE = {
 
   // ── Organization ────────────────────────────────────────────
-  name: 'CCQ',
+  name: 'CCQ Pvt Ltd',
   brandName: 'CCQ',
   portfolioBrandName: 'CCQ DEV Portfolio',
-  tagline: 'Empowering Young Innovators',
-  attribution: 'Team CCQ',
-  description: 'CCQ empowers students, schools, and partners through tech education, innovation programs, hackathons, workshops, and digital solutions.',
+  tagline: 'To design and deliver innovative school and college-focused learning programs, hackathons, internships, and digital platforms for students, while also building custom software solutions and AI tools for select clients across education and industry.',
+  attribution: 'Team CCQ Pvt Ltd',
+  description: 'CCQ Pvt Ltd is an EdTech and software solutions company designing learning programs, hackathons, internships, student platforms, and custom software and AI tools for education and industry clients.',
 
   // ── Domain / URLs ────────────────────────────────────────────
   /** Production domain — used in metadata, sitemap, robots.txt */
@@ -32,7 +32,7 @@ export const SITE = {
   },
 
   seo: {
-    defaultTitle: 'CCQ | Empowering Young Innovators',
+    defaultTitle: 'CCQ Pvt Ltd | EdTech and Software Solutions',
     ogImage: '/logo.png',
     twitterHandle: '@in2ccq',
   },

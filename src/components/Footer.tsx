@@ -16,7 +16,7 @@ export default function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2 group">
               <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-blue-600 group-hover:border-blue-400 transition-colors">
-                <img src="/logo.png" alt="CodeQuest Logo" className="w-full h-full object-cover" />
+                <img src="/logo.png" alt="CCQ Logo" className="w-full h-full object-cover" />
               </div>
               <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                 {SITE.brandName}
