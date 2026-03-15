@@ -133,7 +133,6 @@ export default function FeedbackForm() {
                                 <label key={index} className="cursor-pointer group">
                                     <input
                                         type="radio"
-                                        name="rating"
                                         value={ratingValue}
                                         onClick={() => setRating(ratingValue)}
                                         className="hidden"
