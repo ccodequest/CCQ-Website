@@ -19,7 +19,8 @@ interface LegalPageProps {
 }
 
 export default function LegalPage({ eyebrow, title, intro, path, description, sections }: LegalPageProps) {
-    const pageUrl = `${SITE.siteUrl}${path}`;
+    const normalizedPath = path && !path.startsWith('/') ? `/${path}` : path;
+    const pageUrl = `${SITE.siteUrl}${normalizedPath}`;
     const structuredData = [
         {
             '@context': 'https://schema.org',
