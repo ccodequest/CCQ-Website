@@ -5,6 +5,13 @@ import { FaEnvelope, FaLinkedin, FaInstagram, FaPhoneAlt, FaCheckCircle, FaTimes
 import EnquiryForm from './EnquiryForm';
 import { SITE } from '@/config/siteConfig';
 
+function formatPhone(raw: string | undefined): { href: string; display: string } | null {
+    if (!raw) return null;
+    const digits = raw.replace(/[^\d+]/g, '');
+    const display = raw.replace(/(\d{5})(\d{5})$/, '$1 $2') || raw;
+    return { href: `tel:${digits}`, display };
+}
+
 export default function Contact() {
     // const [isSubmitting, setIsSubmitting] = useState(false); // Removed: Handled in EnquiryForm
     const [showModal, setShowModal] = useState(false);
@@ -43,8 +50,8 @@ export default function Contact() {
                                         <FaPhoneAlt />
                                     </div>
                                     <div className="flex flex-col">
-                                        <a href={`tel:${SITE.phones.primary}`} className="text-sm font-medium">{SITE.phones.primary.replace(/(\d{5})(\d{5})/, '$1 $2')}</a>
-                                        <a href={`tel:${SITE.phones.secondary}`} className="text-sm font-medium">{SITE.phones.secondary.replace(/(\d{5})(\d{5})/, '$1 $2')}</a>
+                                        {(() => { const p = formatPhone(SITE.phones.primary); return p ? <a href={p.href} className="text-sm font-medium">{p.display}</a> : null; })()}
+                                        {(() => { const p = formatPhone(SITE.phones.secondary); return p ? <a href={p.href} className="text-sm font-medium">{p.display}</a> : null; })()}
                                     </div>
                                 </div>
                             </div>
