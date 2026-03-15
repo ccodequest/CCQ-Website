@@ -61,7 +61,7 @@ const sections = [
     {
         title: 'Your choices',
         paragraphs: [
-            'You may contact us to request access, correction, or deletion of personal information you have shared, subject to any legal or operational requirements that require retention.',
+            `You may contact us at ${SITE.emails.support} to request access, correction, or deletion of personal information you have shared, subject to any legal or operational requirements that require retention.`,
             'If you no longer want to hear from us, you can ask us to stop using your information for follow-up communication.',
         ],
     },
@@ -69,7 +69,7 @@ const sections = [
         title: 'Updates to this policy',
         paragraphs: [
             'We may update this Privacy Policy from time to time to reflect changes in our website, services, or legal obligations.',
-            `When we make material changes, we will update the effective date shown on this page.`,
+            `This policy was last updated on ${SITE.legal.effectiveDate}. When we make material changes, we will update the effective date shown on this page.`,
         ],
     },
 ] as const;
