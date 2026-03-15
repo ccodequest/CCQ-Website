@@ -2,69 +2,70 @@ import { MetadataRoute } from 'next';
 import { SITE } from '@/config/siteConfig';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+    const baseUrl = SITE.siteUrl.replace(/\/$/, '');
     return [
         {
-            url: `${SITE.siteUrl}`,
+            url: baseUrl,
             lastModified: new Date(),
             changeFrequency: 'yearly',
             priority: 1,
         },
         {
-            url: `${SITE.siteUrl}/portfolio`,
+            url: `${baseUrl}/portfolio`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.8,
         },
         {
-            url: `${SITE.siteUrl}/mission`,
+            url: `${baseUrl}/mission`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.8,
         },
         {
-            url: `${SITE.siteUrl}/team`,
+            url: `${baseUrl}/team`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.8,
         },
         {
-            url: `${SITE.siteUrl}/gallery`,
+            url: `${baseUrl}/gallery`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.8,
         },
         {
-            url: `${SITE.siteUrl}/partners`,
+            url: `${baseUrl}/partners`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.5,
         },
         {
-            url: `${SITE.siteUrl}/contact`,
+            url: `${baseUrl}/contact`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.7,
         },
         {
-            url: `${SITE.siteUrl}/feedback`,
+            url: `${baseUrl}/feedback`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.6,
         },
         {
-            url: `${SITE.siteUrl}/privacy-policy`,
+            url: `${baseUrl}/privacy-policy`,
             lastModified: new Date(),
             changeFrequency: 'yearly',
             priority: 0.4,
         },
         {
-            url: `${SITE.siteUrl}/terms-of-service`,
+            url: `${baseUrl}/terms-of-service`,
             lastModified: new Date(),
             changeFrequency: 'yearly',
             priority: 0.4,
         },
         {
-            url: `${SITE.siteUrl}/code-of-conduct`,
+            url: `${baseUrl}/code-of-conduct`,
             lastModified: new Date(),
             changeFrequency: 'yearly',
             priority: 0.4,
