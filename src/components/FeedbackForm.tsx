@@ -3,8 +3,10 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { FaCheckCircle, FaStar, FaArrowLeft } from 'react-icons/fa';
-import { submitFeedback } from '@/app/actions/feedback';
 import { SITE } from '@/config/siteConfig';
+
+// Hardcoded Web3Forms access key – submitted client-side to avoid Cloudflare blocking server-side fetch
+const WEB3FORMS_KEY = 'f12d555d-cffd-482e-b30b-68863e7207a6';
 
 export default function FeedbackForm() {
     const router = useRouter();
@@ -33,19 +35,39 @@ export default function FeedbackForm() {
         }
         setIsSubmitting(true);
 
-        const formData = new FormData(e.currentTarget);
-        formData.append('rating', rating.toString());
+        const form = e.currentTarget;
+        const rawFormData = new FormData(form);
 
         try {
-            const result = await submitFeedback(formData);
+            const fd = new FormData();
+            fd.append('access_key', WEB3FORMS_KEY);
+            fd.append('subject', `${SITE.name} Feedback Submission`);
+            fd.append('from_name', `${SITE.name} Website Feedback`);
+            fd.append('name', rawFormData.get('name') as string);
+            fd.append('email', rawFormData.get('email') as string);
+            fd.append('replyto', rawFormData.get('email') as string);
+            fd.append('organization', (rawFormData.get('organization') as string) || 'Not provided');
+            fd.append('role', rawFormData.get('role') as string);
+            fd.append('rating', `${rating}/5`);
+            fd.append('contact_back', rawFormData.get('contact_back') === 'Yes' ? 'Yes' : 'No');
+            fd.append('message', rawFormData.get('message') as string);
 
-            if (result.success) {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: fd,
+                headers: { Accept: 'application/json' },
+            });
+
+            const data = await response.json().catch(() => null);
+            const success = response.ok && data?.success;
+
+            if (success) {
                 setShowModal(true);
-                (e.target as HTMLFormElement).reset();
+                form.reset();
                 setRating(0);
                 setRole('Student');
             } else {
-                alert(result.message || 'Something went wrong. Please try again.');
+                alert(data?.message || 'Something went wrong. Please try again.');
             }
         } catch (error) {
             console.error('Submission error', error);
@@ -54,6 +76,7 @@ export default function FeedbackForm() {
             setIsSubmitting(false);
         }
     };
+
 
     return (
         <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 dark:border-gray-700 relative overflow-hidden">

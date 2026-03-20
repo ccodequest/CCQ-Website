@@ -68,6 +68,9 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
     title: `Our Team | ${SITE.name}`,
     description: `Meet the team behind ${SITE.name} building EdTech programs and software solutions for learners and organizations.`,
+    alternates: {
+        canonical: '/team',
+    },
 };
 
 export default function TeamPage() {
@@ -142,7 +145,7 @@ export default function TeamPage() {
                         <p className="text-blue-100 text-sm mb-6">
                             We are always looking for passionate individuals to join our mission.
                         </p>
-                        <a href="mailto:careers@codequest.com" className="px-6 py-2 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-colors text-sm uppercase tracking-wider">
+                        <a href={`mailto:${SITE.emails.primary}`} className="px-6 py-2 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-colors text-sm uppercase tracking-wider">
                             Apply Now
                         </a>
                     </div>*/}

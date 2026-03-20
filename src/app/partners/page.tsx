@@ -8,6 +8,9 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
     title: `Our Partners | ${SITE.name}`,
     description: `${SITE.name} partners with schools, colleges, and organizations to deliver meaningful EdTech programs and software solutions.`,
+    alternates: {
+        canonical: '/partners',
+    },
 };
 
 export default function PartnersPage() {

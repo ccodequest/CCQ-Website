@@ -62,6 +62,17 @@ export default function Portfolio() {
             url: SITE.portfolio.nishaInterio,
             status: 'In Progress - Private Beta',
             statusColor: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/50'
+        },
+        {
+            id: 4,
+            title: 'ProjectHelp',
+            category: 'web',
+            description: 'A full-stack academic project marketplace for students — offering 500+ domain-specific projects (AI/ML, Web, IoT, DBMS, and more) with complete source code, documentation, and 24/7 WhatsApp support.',
+            tags: ['Next.js', 'Node.js', 'MongoDB'],
+            icon: <FaDatabase className="text-orange-500 size-8" />,
+            url: 'https://projecthelp.in',
+            status: 'Completed - Live',
+            statusColor: 'bg-green-500/20 text-green-300 border-green-500/50'
         }
     ];
 

@@ -3,6 +3,9 @@
 import { FaTimes, FaCheckCircle, FaPaperPlane, FaCode, FaRocket } from 'react-icons/fa';
 import { useState } from 'react';
 
+// Hardcoded Web3Forms access key – submitted client-side to avoid Cloudflare blocking server-side fetch
+const WEB3FORMS_KEY = 'f12d555d-cffd-482e-b30b-68863e7207a6';
+
 interface WebDevEnquiryModalProps {
     isOpen: boolean;
     onClose: () => void;
@@ -24,12 +27,36 @@ export default function WebDevEnquiryModal({ isOpen, onClose }: WebDevEnquiryMod
         e.preventDefault();
         setIsSubmitting(true);
 
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        try {
+            const fd = new FormData();
+            fd.append('access_key', WEB3FORMS_KEY);
+            fd.append('subject', 'CCQ DEV – New Web Project Enquiry');
+            fd.append('from_name', 'CCQ DEV Portfolio');
+            fd.append('name', formData.name);
+            fd.append('email', formData.email);
+            fd.append('replyto', formData.email);
+            fd.append('project_type', formData.projectType);
+            fd.append('message', formData.message);
 
-        setIsSubmitting(false);
-        setShowSuccess(true);
-        setFormData({ name: '', email: '', projectType: 'website', message: '' });
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: fd,
+                headers: { Accept: 'application/json' },
+            });
+
+            const data = await response.json().catch(() => null);
+
+            if (response.ok && data?.success) {
+                setShowSuccess(true);
+                setFormData({ name: '', email: '', projectType: 'website', message: '' });
+            } else {
+                alert(data?.message || 'Something went wrong. Please try again.');
+            }
+        } catch {
+            alert('Network error. Please check your connection.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleClose = () => {

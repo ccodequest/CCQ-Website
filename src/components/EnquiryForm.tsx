@@ -2,7 +2,9 @@
 
 import { useState } from 'react';
 import { FaCheckCircle, FaSpinner } from 'react-icons/fa';
-import { submitToWeb3Forms } from '@/app/actions/web3forms';
+
+// Hardcoded Web3Forms access key – submitted client-side to avoid Cloudflare blocking server-side fetch
+const WEB3FORMS_KEY = 'f12d555d-cffd-482e-b30b-68863e7207a6';
 
 export default function EnquiryForm({ onSuccess }: { onSuccess?: () => void }) {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,9 +41,23 @@ export default function EnquiryForm({ onSuccess }: { onSuccess?: () => void }) {
         }
 
         try {
-            const result = await submitToWeb3Forms(formData);
+            const fd = new FormData();
+            // Copy all form fields
+            for (const [key, value] of formData.entries()) {
+                fd.append(key, value);
+            }
+            fd.append('access_key', WEB3FORMS_KEY);
 
-            if (result.success) {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: fd,
+                headers: { Accept: 'application/json' },
+            });
+
+            const data = await response.json().catch(() => null);
+            const success = response.ok && data?.success;
+
+            if (success) {
                 if (onSuccess) onSuccess();
                 (e.target as HTMLFormElement).reset();
                 setSubject("");
@@ -49,7 +65,7 @@ export default function EnquiryForm({ onSuccess }: { onSuccess?: () => void }) {
                 setDate("");
                 setTime("");
             } else {
-                alert(result.message || "Something went wrong. Please try again.");
+                alert(data?.message || 'Something went wrong. Please try again.');
             }
         } catch (error) {
             console.error("Submission error", error);

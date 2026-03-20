@@ -15,12 +15,12 @@
 export const SITE = {
 
   // ── Organization ────────────────────────────────────────────
-  name: 'CCQ Pvt Ltd',
-  brandName: 'CCQ',
+  name: 'CCQ PVT Ltd',
+  brandName: 'CCQ PVT Ltd',
   portfolioBrandName: 'CCQ DEV Portfolio',
   tagline: 'To design and deliver innovative school and college-focused learning programs, hackathons, internships, and digital platforms for students, while also building custom software solutions and AI tools for select clients across education and industry.',
-  attribution: 'Team CCQ Pvt Ltd',
-  description: 'CCQ Pvt Ltd is an EdTech and software solutions company designing learning programs, hackathons, internships, student platforms, and custom software and AI tools for education and industry clients.',
+  attribution: 'Team CCQ PVT Ltd',
+  description: 'CCQ PVT Ltd is an EdTech and software solutions company designing learning programs, hackathons, internships, student platforms, and custom software and AI tools for education and industry clients.',
 
   // ── Domain / URLs ────────────────────────────────────────────
   /** Production domain — used in metadata, sitemap, robots.txt */
@@ -32,7 +32,7 @@ export const SITE = {
   },
 
   seo: {
-    defaultTitle: 'CCQ Pvt Ltd | EdTech and Software Solutions',
+    defaultTitle: 'CCQ PVT Ltd | EdTech and Software Solutions',
     ogImage: '/logo.png',
     twitterHandle: '@in2ccq',
   },
@@ -86,19 +86,19 @@ export const SITE = {
 
   // ── Team LinkedIn profiles ───────────────────────────────────
   team: {
-    zaid:    { linkedin: 'https://www.linkedin.com/in/mohammed-zaid-hassan-8468a3389/' },
-    jordan:  { linkedin: null as string | null },
-    harsh:   { linkedin: 'https://www.linkedin.com/in/j-harsh-vardhan-934a00258/' },
+    zaid: { linkedin: 'https://www.linkedin.com/in/mohammed-zaid-hassan-8468a3389/' },
+    jordan: { linkedin: null as string | null },
+    harsh: { linkedin: 'https://www.linkedin.com/in/j-harsh-vardhan-934a00258/' },
     sulthan: { linkedin: 'https://www.linkedin.com/in/mohammed-sulthan-salahuddin-ayyubee/' },
     shreyas: { linkedin: 'https://www.linkedin.com/in/shreyas-dhalve-6a8b6727a/' },
-    divya:   { linkedin: 'https://www.linkedin.com/in/mani-divya-vani-bb123469/' },
-    vishal:  { linkedin: 'https://www.linkedin.com/in/vishal-gowda-9b2817322/' },
+    divya: { linkedin: 'https://www.linkedin.com/in/mani-divya-vani-bb123469/' },
+    vishal: { linkedin: 'https://www.linkedin.com/in/vishal-gowda-9b2817322/' },
   },
 
   // ── Portfolio project URLs ────────────────────────────────────
   portfolio: {
-    plotIQ:       'https://land-xi-ebon.vercel.app/',
-    medhaSya:     'https://www.medhasyaacademy.com/',
+    plotIQ: 'https://land-xi-ebon.vercel.app/',
+    medhaSya: 'https://www.medhasyaacademy.com/',
     nishaInterio: 'https://v0-nisha-interio-website.vercel.app/',
   },
 } as const;

@@ -102,7 +102,62 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  /* Prevent horizontal overflow on all devices */
+  overflow-x: hidden;
+  /* Legacy tap highlight reset for Android 2.x */
+  -webkit-tap-highlight-color: transparent;
 }
+
+/* ──────────────────────────────────────────────
+   Legacy Browser Fallbacks
+   (Supports IE10+, Android 4+, iOS 7+)
+──────────────────────────────────────────────── */
+
+/* Box-model reset for older browsers */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal scroll on html root too */
+html {
+  overflow-x: hidden;
+  /* Improve text rendering on older devices */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Flexbox vendor prefixes for IE 10/11 and older WebKit */
+.flex-legacy {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* Gradient fallback for browsers that don't support bg-clip: text */
+.gradient-text-fallback {
+  color: #2563eb; /* blue-600 fallback colour */
+}
+
+/* Smooth scrolling with legacy fallback */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Ensure images scale down on small screens */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
 
 /* Global Image Protection */
 img {

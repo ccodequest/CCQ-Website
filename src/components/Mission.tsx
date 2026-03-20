@@ -1,6 +1,7 @@
 'use client';
 
 import { FaLightbulb, FaUsers, FaChartLine, FaRocket, FaPuzzlePiece, FaGraduationCap, FaGamepad, FaTrophy, FaCertificate } from 'react-icons/fa';
+import { SITE } from '@/config/siteConfig';
 
 export default function Mission() {
     const missions = [
@@ -84,7 +85,7 @@ export default function Mission() {
                 {/* Why Choose Us */}
                 <div className="bg-gray-50 dark:bg-gray-900 rounded-3xl p-8 md:p-12 lg:p-16">
                     <div className="max-w-3xl mx-auto text-center mb-16">
-                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Why Choose CodeQuest?</h2>
+                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Why Choose {SITE.brandName}?</h2>
                         <p className="text-lg text-gray-600 dark:text-gray-400">Programs designed by tech education experts to make learning accessible and fun</p>
                     </div>
 

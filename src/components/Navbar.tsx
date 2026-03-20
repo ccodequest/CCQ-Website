@@ -5,9 +5,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import EnquiryModal from './EnquiryModal';
+import { SITE } from '@/config/siteConfig';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+
   const [scrolled, setScrolled] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const pathname = usePathname();
@@ -32,7 +34,7 @@ export default function Navbar() {
     { name: 'Home', href: '/' },
     { name: 'Web Development', href: '/portfolio' },
     { name: 'Our Mission', href: '/mission' },
-    { name: 'Partners', href: '/partners' },
+    // { name: 'Partners', href: '/partners' }, // commented out – re-enable when ready
     { name: 'Our Team', href: '/team' },
     { name: 'Gallery', href: '/gallery' },
   ];
@@ -48,10 +50,10 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group">
               <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-blue-600 group-hover:border-blue-400 transition-colors">
-                <img src="/logo.png" alt="CodeQuest Logo" className="w-full h-full object-cover" />
+                <img src="/logo.png" alt="CCQ Logo" className="w-full h-full object-cover" />
               </div>
               <span className={`text-xl font-bold tracking-tight transition-colors ${scrolled ? 'text-gray-900 dark:text-white' : 'text-gray-900 dark:text-white'}`}>
-                C/CODEQUEST
+                {SITE.brandName.toUpperCase()}
               </span>
             </Link>
 

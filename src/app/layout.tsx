@@ -1,7 +1,7 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Poppins } from 'next/font/google';
 import './globals.css';
-import HackathonRegisterButton from '@/components/HackathonRegisterButton';
+// import HackathonRegisterButton from '@/components/HackathonRegisterButton'; // commented out – re-enable when ready
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import JsonLd from '@/components/JsonLd';
 import { SITE } from '@/config/siteConfig';
@@ -49,6 +49,20 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  alternates: {
+    canonical: SITE.siteUrl,
+  },
+};
+
+// Explicitly set viewport for correct mobile rendering on old browsers/devices
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#09090b' },
+  ],
 };
 
 export default function RootLayout({
@@ -92,7 +106,7 @@ export default function RootLayout({
       <body className="bg-gray-900 text-white font-poppins overflow-x-hidden">
         <JsonLd data={structuredData} />
         {children}
-        <HackathonRegisterButton />
+        {/* <HackathonRegisterButton /> */}  {/* Register Now sidebar – commented out */}
         <SpeedInsights />
       </body>
     </html>

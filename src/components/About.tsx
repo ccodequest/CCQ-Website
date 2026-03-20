@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Watermark from './Watermark';
+import { motion } from 'framer-motion';
 import { SITE } from '@/config/siteConfig';
 
 export default function About() {
@@ -38,7 +39,7 @@ export default function About() {
 
                         <div className="prose prose-lg text-gray-600 dark:text-gray-300">
                             <p>
-                                CODEQUEST was founded by a group of passionate tech enthusiasts with a shared vision: to create
+                                {SITE.brandName.toUpperCase()} was founded by a group of passionate tech enthusiasts with a shared vision: to create
                                 a platform where innovation thrives and collaboration is celebrated. Today, as {SITE.name}, we
                                 continue that vision as an EdTech and software solutions company.
                             </p>

@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Watermark from '@/components/Watermark';
 import { FaHandshake, FaLightbulb, FaHeart, FaRocket } from 'react-icons/fa';
+import { SITE } from '@/config/siteConfig';
 
 const galleryImages = [
     "/Gallery/IMG_1088.jpg",
@@ -36,7 +37,7 @@ function GalleryCarousel() {
                 >
                     <img
                         src={src}
-                        alt={`Life at CodeQuest - Slide ${index + 1}`}
+                        alt={`Life at ${SITE.brandName} - Slide ${index + 1}`}
                         className="w-full h-full object-cover"
                         onContextMenu={(e) => e.preventDefault()}
                         draggable={false}
@@ -74,7 +75,7 @@ export default function MissionContent() {
                         Empowering the Innovators of Tomorrow
                     </h1>
                     <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                        At CodeQuest, we don't just teach code; we cultivate a mindset of curiosity, resilience, and creativity that prepares students for a future we can only imagine.
+                        At {SITE.brandName}, we don't just teach code; we cultivate a mindset of curiosity, resilience, and creativity that prepares students for a future we can only imagine.
                     </p>
                 </div>
             </section>
@@ -87,7 +88,7 @@ export default function MissionContent() {
                             <div className="absolute -top-4 -left-4 w-24 h-24 bg-yellow-200 dark:bg-yellow-900/50 rounded-full blur-2xl opacity-70"></div>
                             <img
                                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                alt="CodeQuest Classroom"
+                                alt={`${SITE.brandName} Classroom`}
                                 className="relative rounded-3xl shadow-2xl z-10 w-full object-cover h-[500px]"
                             />
                             <div className="absolute -bottom-6 -right-6 w-full h-full border-2 border-blue-500 rounded-3xl z-0 hidden md:block"></div>
@@ -97,7 +98,7 @@ export default function MissionContent() {
                         <div>
                             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Our Story</h2>
                             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                                CodeQuest began with a simple observation: technology was moving fast, but education wasn't keeping up. We saw brilliant young minds consuming technology but rarely understanding how to create it.
+                                {SITE.brandName} began with a simple observation: technology was moving fast, but education wasn't keeping up. We saw brilliant young minds consuming technology but rarely understanding how to create it.
                             </p>
                             <p className="text-gray-600 dark:text-gray-400 leading-relaxed mt-4">
                                 What started as a small weekend workshop for 10 students has grown into a movement. Today, we partner with leading schools to bring world-class tech education directly into the classroom, bridging the gap between theoretical knowledge and real-world application.
@@ -114,13 +115,15 @@ export default function MissionContent() {
                 </div>
             </section>
 
-            {/* Auto-Rotating Gallery Carousel */}
+            {/* Auto-Rotating Gallery Carousel – commented out */}
+            {/*
             <section className="py-12 bg-white dark:bg-gray-950 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Life at CodeQuest</h2>
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Life at {SITE.brandName}</h2>
                 </div>
                 <GalleryCarousel />
             </section>
+            */}
 
             {/* Core Values */}
             <section className="py-20 bg-gray-50 dark:bg-gray-900 px-4 sm:px-6 lg:px-8">
@@ -175,7 +178,7 @@ export default function MissionContent() {
                     <div className="relative z-10">
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">Join Us on This Journey</h2>
                         <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
-                            Whether you are a parent, a principal, or a student, there is a place for you in the CodeQuest ecosystem.
+                            Whether you are a parent, a principal, or a student, there is a place for you in the {SITE.brandName} ecosystem.
                         </p>
                         <a href="/#contact" className="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded-xl shadow-lg hover:bg-gray-50 hover:scale-105 transition-all">
                             Get in Touch

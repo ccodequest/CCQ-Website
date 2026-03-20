@@ -5,25 +5,21 @@
  * This keeps the API access key secure on the server side
  */
 export async function submitToWeb3Forms(formData: FormData) {
-  const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+  // Use env variable if set, otherwise fall back to hardcoded key
+  const accessKey = process.env.WEB3FORMS_ACCESS_KEY || 'f12d555d-cffd-482e-b30b-68863e7207a6';
 
-  if (!accessKey) {
-    console.error('WEB3FORMS_ACCESS_KEY is not configured');
-    return {
-      success: false,
-      message: 'Server configuration error. Please contact support.',
-    };
-  }
+  // Web3Forms API Key
+  // WEB3FORMS_ACCESS_KEY = f12d555dcffd482eb30b68863e7207a6
 
   // Create a new FormData object and copy all fields from the original
   // This is necessary because FormData from client is read-only
   const serverFormData = new FormData();
-  
+
   // Copy all existing fields
   for (const [key, value] of formData.entries()) {
     serverFormData.append(key, value);
   }
-  
+
   // Add the access key securely on the server side
   serverFormData.append('access_key', accessKey);
 
@@ -31,9 +27,24 @@ export async function submitToWeb3Forms(formData: FormData) {
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       body: serverFormData,
+      headers: {
+        'Accept': 'application/json',
+      },
     });
 
-    const data = await response.json();
+    const contentType = response.headers.get('content-type');
+    let data;
+
+    if (contentType && contentType.includes('application/json')) {
+      data = await response.json();
+    } else {
+      const text = await response.text();
+      console.error('Web3Forms non-JSON response:', text);
+      return {
+        success: false,
+        message: 'Server returned an unexpected response. Please try again later.',
+      };
+    }
 
     if (response.ok) {
       return {
